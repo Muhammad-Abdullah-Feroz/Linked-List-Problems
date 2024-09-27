@@ -17,17 +17,26 @@ node *reverseList(node *head)
     return prev;
 }
 
-int main()
-{
-    node *head = new node(5);
+void display(node * head){
+    node * temp = head;
+    while(temp->next){
+        cout<<temp->value<<" -> ";
+        temp = temp->next;
+    }
+    cout<<temp->value<<endl;
+}
+
+int main(){
+    node* head = new node(5);
     head->next = new node(10);
     head->next->next = new node(15);
     head->next->next->next = new node(20);
     head->next->next->next->next = new node(25);
 
-    head->display();
+    display(head);
 
     head = reverseList(head);
 
+    display(head);
+
 }
-    head->display();
