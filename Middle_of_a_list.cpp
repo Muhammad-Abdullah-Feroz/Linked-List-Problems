@@ -1,49 +1,42 @@
-#include <iostream>
-#include <conio.h>
+#include "Node.h"
 
-using namespace std;
-
-class node
+int findMiddle(node *head)
 {
-public:
-    int value;
-    node *next;
 
-    node(int val)
+    if (head)
     {
-        value = val;
-        next = nullptr;
+        node *slowPointer = head;
+        node *fastPointer = head;
+
+        while (fastPointer && fastPointer->next)
+        {
+            slowPointer = slowPointer->next;
+            fastPointer = fastPointer->next->next;
+        }
+
+        return slowPointer->value;
     }
-};
-
-
-int findMiddle(node* head){
-if(head){
-    node* slowPointer = head;
-    node* fastPointer = head;
-
-    while(fastPointer && fastPointer->next){
-        slowPointer = slowPointer->next;
-        fastPointer = fastPointer->next->next;
-    }
-    
-    return slowPointer->value;
-}
-else
-    return NULL;
+    else
+        return NULL;
 }
 
-int main(){
-    node* head = new node(5);
-    cout<<endl<<"Middle Value : "<<findMiddle(head);
+int main()
+{
+    node *head = new node(5);
+    cout << endl
+         << "Middle Value : " << findMiddle(head);
     head->next = new node(10);
-    cout<<endl<<"Middle Value : "<<findMiddle(head);
+    cout << endl
+         << "Middle Value : " << findMiddle(head);
     head->next->next = new node(20);
-    cout<<endl<<"Middle Value : "<<findMiddle(head);
+    cout << endl
+         << "Middle Value : " << findMiddle(head);
     head->next->next->next = new node(40);
-    cout<<endl<<"Middle Value : "<<findMiddle(head);
+    cout << endl
+         << "Middle Value : " << findMiddle(head);
     head->next->next->next->next = new node(80);
-    cout<<endl<<"Middle Value : "<<findMiddle(head);
+    cout << endl
+         << "Middle Value : " << findMiddle(head);
 
     return 0;
 }
