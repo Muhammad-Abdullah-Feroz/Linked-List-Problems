@@ -14,5 +14,15 @@ public:
         value = val;
         next = nullptr;
     }
-};
 
+    void display()
+    {
+        node *temp = this;
+        while (temp->next)
+        {
+            cout << temp->value << " -> ";
+            temp = temp->next;
+        }
+        cout << temp->value << endl;
+    }
+};
