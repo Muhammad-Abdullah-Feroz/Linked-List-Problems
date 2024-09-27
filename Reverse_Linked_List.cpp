@@ -29,5 +29,5 @@ int main()
 
     head = reverseList(head);
 
-    head->display();
 }
+    head->display();
